@@ -1,0 +1,65 @@
+body{
+    background: linear-gradient(to right,#2b702b,#b7b6b8);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 40px;
+}
+
+h1{
+    color: #323532;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 25px;
+    border: 5px solid darkred;
+    padding: 15px;
+    border-radius: 50px;
+    text-align: center;
+}
+#titulo{
+    color: #f5f4f7;
+}
+
+p{
+    font-size: 20px;
+    text-align: center;
+}
+.destacado {
+    color: #0a034d;
+    font-size: 24px;
+}
+
+h2{
+    font-size: 28px;
+    color: #6d217c;
+    margin-bottom: 15px;
+    border: 3px solid black;
+    padding: 10px;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.tarjeta{
+    background: linear-gradient(to left, #0a034d, #1f10a0);
+    border: 4px solid #000000;
+    color: #050505;
+    border-radius: 25px;
+    text-align: center;
+    width: 70%;
+    margin: 0px auto;
+    padding: 20px;
+}
+
+.tarjetah2 {
+    color: whitesmoke;
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.tarjetaP{
+    color: whitesmoke;
+    font-size: 13px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.tarjetaLista{
+    color: whitesmoke;
+    font-size: 13px;
+    margin-bottom: 25px;
+    font-family: 'Courier New', Courier, monospace;
+}
