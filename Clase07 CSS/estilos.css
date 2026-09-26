@@ -62,6 +62,12 @@ h2{
     font-size: 13px;
     margin-bottom: 25px;
     font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 *{
