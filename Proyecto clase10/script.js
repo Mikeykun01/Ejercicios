@@ -7,6 +7,8 @@ const formulario = document.querySelector("#formReg");
 const nombreInput = document.querySelector("#nombreUsuario");
 const correoInput = document.querySelector("#correoUsuario");
 const edadInput = document.querySelector("#edadUsuario");
+const botonSubmit = formulario.querySelector('button[type="submit"]');
+const botonCancelar = formulario.querySelector("#botonCancelar");
 const listaUsuarios = document.querySelector("#listaUsuarios");
 
 // Recuperamos los datos almacenados en el navegador.
@@ -66,7 +68,22 @@ function mostrarUsuarios(){
             correoInput.value = usuarioActual.correo;
             edadInput.value = usuarioActual.edad;
 
+            botonSubmit.textContent = "Guardar";
+            botonCancelar.hidden = false;
+
         });
+
+        botonCancelar.addEventListener("click", function() {
+
+            console.log("Se presionó cancelar");
+
+            formulario.reset();
+            usuarioEditado = null;
+            botonSubmit.textContent = "Registrar usuario";
+            botonCancelar.hidden = true;
+
+        });
+        
     }
 };
 
@@ -145,6 +162,8 @@ formulario.addEventListener("submit", function(event){
     mostrarUsuarios();
     formulario.reset();
     usuarioEditado = null;
+    botonSubmit.textContent = "Registrar usuario";
+    botonCancelar.hidden = true;
 });
 
 
