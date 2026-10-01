@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1e293b;
+}
+
+#listaUsuarios {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tarjetaUsuario {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+}
+
+.tarjetaUsuario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.datosUsuario p {
+    margin: 5px 0;
+}
+
+.accionesUsuario {
+    display: flex;
+    gap: 10px;
+}
+
+.datosUsuario p:first-child {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.btnEliminar {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btnEliminar:hover {
+    background-color: #991b1b;
+}
+
+.btnEditar {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btnEditar:hover {
+    background-color: #1e40af;
+}
+
+#formReg {
+    background-color: #f8fafc;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    max-width: 500px;
+    margin-bottom: 25px;
+}
+
+#formReg input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#formReg input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+#formReg button[type="submit"] {
+    background-color: #16a34a;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#formReg button[type="submit"]:hover {
+    background-color: #15803d;
+}
+
+#formReg label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #334155;
+}
+
+.btnCancelar {
+    background-color: #a31616;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.btnCancelar:hover {
+    background-color: #801515;
+}
+
+@media (max-width: 600px) {
+    .tarjetaUsuario {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .accionesUsuario {
+        width: 100%;
+    }
+
+    .accionesUsuario button {
+        flex: 1;
+    }
+}

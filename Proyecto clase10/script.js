@@ -22,19 +22,41 @@ if(datosGuardados !== null){
 // Función encargada de mostrar los usuarios en el HTML.
 function mostrarUsuarios(){
 
+    
+
     // Limpiamos la lista para evitar duplicar elementos.
     listaUsuarios.textContent = "";
 
     // Recorremos todos los usuarios registrados.
     for (let i = 0; i < usuario.length; i++){
+        
+        const nombreTexto = document.createElement("p");
+        const correoTexto = document.createElement("p");
+        const edadTexto = document.createElement("p");
+
+        
 
         // Obtenemos el usuario correspondiente a la posición actual.
         const usuarioActual = usuario[i];
 
+        nombreTexto.textContent = usuarioActual.nombre;
+        correoTexto.textContent = usuarioActual.correo;
+        edadTexto.textContent = usuarioActual.edad;
         // Creamos un elemento de lista para mostrar sus datos.
         const elementoUsuario = document.createElement("li");
+        
+        elementoUsuario.classList.add("tarjetaUsuario");
 
-        elementoUsuario.textContent = usuarioActual.nombre + " - " + usuarioActual.edad + " - " + usuarioActual.correo;
+        //Contenedor de los datos de usuario
+        const datosUsuario = document.createElement("div");
+        datosUsuario.classList.add("datosUsuario");
+        datosUsuario.appendChild(nombreTexto);
+        datosUsuario.appendChild(correoTexto);
+        datosUsuario.appendChild(edadTexto);
+
+        //Contenedor de los botones
+        const accionesUsuario = document.createElement("div");
+        accionesUsuario.classList.add("accionesUsuario");
 
         // Agregamos el elemento al listado del HTML.
         listaUsuarios.appendChild(elementoUsuario);
@@ -42,14 +64,19 @@ function mostrarUsuarios(){
         // Creamos el botón para eliminar al usuario.
         const botonElim = document.createElement("button");
         botonElim.textContent = "Eliminar";
+        botonElim.classList.add("btnEliminar");
 
-        elementoUsuario.appendChild(botonElim);
+        accionesUsuario.appendChild(botonElim);
 
         // Creamos el botón para editar al usuario.
         const botonEdit = document.createElement("button");
         botonEdit.textContent = "Editar";
+        botonEdit.classList.add("btnEditar");
 
-        elementoUsuario.appendChild(botonEdit);
+        accionesUsuario.appendChild(botonEdit);
+
+        elementoUsuario.appendChild(datosUsuario);
+        elementoUsuario.appendChild(accionesUsuario);
 
         // Detectamos cuando se presiona el botón.
         botonElim.addEventListener("click", function(){
@@ -73,10 +100,8 @@ function mostrarUsuarios(){
 
         });
 
+        botonCancelar.classList.add("btnCancelar");
         botonCancelar.addEventListener("click", function() {
-
-            console.log("Se presionó cancelar");
-
             formulario.reset();
             usuarioEditado = null;
             botonSubmit.textContent = "Registrar usuario";
@@ -166,29 +191,8 @@ formulario.addEventListener("submit", function(event){
     botonCancelar.hidden = true;
 });
 
-
-
-/*usuario.push({
-    nombre:"Carlos",
-    correo: "carlos@gmail.com",
-    edad: 26
-});
-
-usuario.push({
-    nombre:"Miguel",
-    correo: "miguel@gmail.com",
-    edad: 27
-});
-
-usuario.push({
-    nombre:"Luis",
-    correo: "luis@gmail.com",
-    edad: 24
-});*/
-
 console.log(formulario);
 console.log(datosGuardados);
 
-/*localStorage.setItem("prueba", "Hola Miguel");
-console.log(localStorage.getItem("prueba"));*/
+
 
