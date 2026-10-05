@@ -1,0 +1,160 @@
+CREATE TABLE usuarios (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT,
+    correo TEXT,
+    edad INTEGER
+);
+
+INSERT INTO usuarios (nombre,correo,edad)
+values ('Logan','logan@gmail.com',29),('Melina','mel@gmail.com',23),('Marla','marl@gmail.com',32), 
+('Luna','lunita@gmail.com',22);
+
+select nombre, edad from usuarios where edad = 22 or edad = 30;
+
+UPDATE usuarios
+set edad = 30
+where id = 8;
+
+delete from usuarios
+where id = 9;
+
+select nombre,edad
+from usuarios 
+where edad between 25 and 30
+order by edad asc;
+
+select max(edad) as edad_maxima, min(edad) as edad_minima from usuarios;
+
+select count(*) as total_usuarios, avg(edad) as edad_promedio from usuarios;
+
+select count(*) as usuarios_mayores_25 from usuarios
+where edad &gt;= 25;
+
+select edad, count(*) as cantidad from usuarios
+group by edad
+order by cantidad desc;
+
+select avg(edad) as edad_promedio from usuarios
+where edad &gt; 25;
+
+select edad, count(*) as usuarios_cantidad from usuarios
+group by edad
+having count(*) &gt;= 3
+order by usuarios_cantidad desc;
+
+PRAGMA foreign_keys = on;
+
+create table departamentos (
+	id integer primary key,
+	nombre text not null 
+);
+
+create table empleados (
+	id integer primary key,
+	nombre text not null,
+	departamento_id integer,
+	
+	foreign key (departamento_id)
+	references departamentos(id)
+	);
+	
+insert into departamentos (nombre)
+VALUES
+	('Sistemas'),
+	('Recursos Humanos'),
+	('Contabilidad');
+	
+SELECT * from departamentos;
+
+insert into empleados (nombre, departamento_id)
+values 
+	('Miguel', 1),
+	('Laura', 2),
+	('Carlos', 1),
+	('Andrea', 3),
+	('Daniel', 1);
+	
+select * from empleados;
+
+select empleados.nombre as empleado, departamentos.nombre as departamento
+from empleados
+join departamentos
+on empleados.departamento_id = departamentos.id;
+
+insert into departamentos(nombre)
+VALUES('Marketing');
+
+SELECT departamentos.nombre as departamento, empleados.nombre as empleado
+FROM departamentos
+LEFT JOIN empleados
+on departamentos.id = empleados.departamento_id;
+
+select departamentos.nombre as departamento, count(empleados.id) as empleado_cantidad from departamentos
+left join empleados on departamentos.id = empleados.departamento_id
+group by departamento 
+order by empleado_cantidad desc;
+
+SELECT nombre, edad
+FROM usuarios
+WHERE edad &gt; (
+    SELECT AVG(edad)
+    FROM usuarios
+);
+
+SELECT nombre, edad
+FROM usuarios
+WHERE edad = (
+	SELECT MAX(edad)
+	FROM usuarios
+);
+
+SELECT nombre, edad
+FROM usuarios
+WHERE edad IN (
+    SELECT MAX(edad) FROM usuarios
+    UNION
+    SELECT MIN(edad) FROM usuarios
+);
+SELECT nombre, edad 
+FROM usuarios
+WHERE edad IN (
+	SELECT edad FROM usuarios
+	WHERE edad > 35
+);
+
+SELECT nombre, edad 
+FROM usuarios 
+WHERE edad > (
+	SELECT MIN(edad) 
+	FROM usuarios
+);
+
+SELECT nombre, edad
+FROM usuarios
+WHERE edad < (
+	SELECT AVG(edad)
+	FROM usuarios
+);
+
+SELECT nombre, edad
+FROM usuarios
+WHERE edad > (
+	SELECT AVG(edad)
+	FROM usuarios
+	WHERE edad > 25
+);
+
+
+SELECT nombre
+FROM departamentos
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM empleados
+    WHERE empleados.departamento_id = departamentos.id
+);
+
+INSERT INTO departamentos (nombre)
+VALUES 
+('Administración'),
+('Dirección'),
+('Compras');
